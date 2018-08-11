@@ -1,30 +1,122 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/Panda.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Visual/bkg.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="KinematicBody2D" type="KinematicBody2D" index="0"]
+[node name="Node" type="Node" index="0"]
 
-position = Vector2( 51.6942, 69.3791 )
+[node name="RigidBody2d" type="RigidBody2D" parent="." index="0"]
+
+position = Vector2( 300.625, 322.365 )
+scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+mode = 0
+mass = 1.5
+friction = 1.0
+bounce = 0.25
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Linear", "collision" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="RigidBody2d" index="0"]
 
+z_index = 1
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2d" index="1"]
 
-position = Vector2( -0.0679626, 0.134804 )
-scale = Vector2( 3.16379, 3.21101 )
+position = Vector2( -0.0256348, 0.149597 )
+scale = Vector2( 3.05749, 3.07691 )
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2d" index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.5
+drag_margin_top = 0.2
+drag_margin_right = 0.5
+drag_margin_bottom = 0.5
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Smoothing" ]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+_sections_unfolded = [ "Scroll" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground" index="0"]
+
+position = Vector2( 2467.65, 2767.15 )
+scale = Vector2( 8, 8 )
+z_index = -1
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 917504, 9, 0, 917505, 9, 0, 917506, 9, 0, 917507, 9, 0, 917508, 9, 0, 917509, 5, 0, 917510, 6, 0, 917511, 9, 0, 917512, 5, 0, 917513, 6, 0, 917514, 8, 0, 917515, 5, 0, 917516, 8, 0, 917517, 5, 0, 917518, 9, 0, 917519, 9, 0, 917520, 9, 0, 917521, 9, 0, 917522, 9, 0, 917523, 9, 0, 917524, 9, 0, 983058, 9, 0, 983059, 9, 0 )
+_sections_unfolded = [ "Cell" ]
 
 
