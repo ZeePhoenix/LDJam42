@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Code/bambooBase.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Visual/bkg.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=6]
+[ext_resource path="res://Code/Fire.gd" type="Script" id=7]
 
 [sub_resource type="Curve" id=3]
 
@@ -71,11 +72,81 @@ radius = 10.0
 custom_solver_bias = 0.0
 extents = Vector2( 1.37894, 3.57782 )
 
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 49.226, 24.1633 )
+
+[sub_resource type="Gradient" id=7]
+
+offsets = PoolRealArray( -1, -0.9, 1 )
+colors = PoolColorArray( 0.960938, 0.901612, 0.897125, 1, 0.988281, 0.12064, 0.0308838, 1, 0.988281, 0.814862, 0.0231628, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+
+flags = 4
+gradient = SubResource( 7 )
+width = 2048
+
+[sub_resource type="Curve" id=10]
+
+min_value = -1.0
+max_value = 0.5
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+
+flags = 4
+width = 150
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( -80, 5, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, -45, 0 )
+initial_velocity = 12.0
+initial_velocity_random = 1.0
+angular_velocity = 1.5
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 1.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 1.0
+damping_random = 1.0
+angle = 45.0
+angle_random = 0.8
+scale = 5.0
+scale_random = 0.25
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 8 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Spread" ]
+
 [node name="Node" type="Node" index="0"]
 
 [node name="Panda" type="RigidBody2D" parent="." index="0"]
 
-position = Vector2( 512.319, 557.866 )
+position = Vector2( 309.993, 565.714 )
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 3
@@ -766,5 +837,48 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 983079, 13, 0, 983080, 12, 0, 1048613, 13, 0, 1048614, 12, 0, 1114132, 13, 0, 1114133, 12, 0, 1114134, 9, 0, 1114135, 9, 0, 1114136, 9, 0, 1114137, 9, 0, 1114138, 9, 0, 1114139, 9, 0, 1114140, 9, 0, 1114141, 9, 0, 1114142, 9, 0, 1114143, 9, 0, 1114144, 9, 0, 1114145, 9, 0, 1114146, 9, 0, 1114147, 9, 0, 1114148, 9, 0, 1179648, 9, 0, 1179649, 9, 0, 1179650, 9, 0, 1179651, 9, 0, 1179652, 9, 0, 1179653, 9, 0, 1179654, 9, 0, 1179655, 9, 0, 1179656, 9, 0, 1179657, 9, 0, 1179658, 9, 0, 1179659, 9, 0, 1179660, 9, 0, 1179661, 9, 0, 1179662, 9, 0, 1179663, 9, 0, 1179664, 9, 0, 1179665, 9, 0, 1179666, 9, 0, 1179667, 9, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
+
+[node name="Fire" type="Area2D" parent="." index="4"]
+
+position = Vector2( 138.95, 575.644 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 8
+collision_mask = 7
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire" index="0"]
+
+position = Vector2( 0.263519, -15.8113 )
+shape = SubResource( 6 )
+
+[node name="Particles2D" type="Particles2D" parent="Fire" index="1"]
+
+position = Vector2( 0, 3.62512 )
+emitting = true
+amount = 1450
+lifetime = 2.0
+one_shot = false
+preprocess = 600.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 1
+process_material = SubResource( 9 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 
 
