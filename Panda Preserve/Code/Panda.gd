@@ -63,7 +63,7 @@ func eatBamboo():
 	var val = false
 	
 	if eatTime == 0:
-		if linear_velocity.x > -4 && linear_velocity.x < 4:
+		if linear_velocity.x > -8 && linear_velocity.x < 8:
 			eat()
 			val = true
 		
