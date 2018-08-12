@@ -4,19 +4,20 @@ extends RigidBody2D
 const MOVE = 2
 const JUMP = 150
 const EATCOOL = 10
+const MINEAT = 12
 
 # Eating Vars
 var eatTime = 0
 var isEating = false
 var stomach = 0
-var full = 10
+var full = 100
 
 # Part Vars
 var mouth
+var ear
 var spr
 var col
-var cam
-var ear
+var gui
 
 # Growth Vars
 var sz = 1
@@ -28,15 +29,11 @@ func _ready():
 	mouth = get_child(0)
 	spr = get_child(1)
 	col = get_child(2)
-	cam = get_child(3)
-	ear = get_child(4)
-	
-	cam.align()
+	ear = get_child(3)
+	gui = get_parent().get_child(4).get_child(0)
 	pass
 
-
 func _physics_process(delta):
-	#mouth.hide()
 	var move = MOVE + mvU
 	
 	if Input.is_action_pressed("ui_right"):
@@ -62,11 +59,14 @@ func _physics_process(delta):
 func eatBamboo():
 	var val = false
 	
-	if eatTime == 0:
-		if linear_velocity.x > -8 && linear_velocity.x < 8:
+	# If we havent eaten recently
+	if eatTime == 0 && stomach < full:
+		# If we're slow enough
+		if linear_velocity.x > -MINEAT && linear_velocity.x < MINEAT:
 			eat()
 			val = true
-		
+	
+	# If we ate recently
 	if eatTime > 0:
 		eatTime -= 1
 	
@@ -79,11 +79,9 @@ func eat():
 	eatTime = EATCOOL
 	stomach += 1
 	
-	if stomach%full == 0:
-		eatTime = EATCOOL * 2
-		grow()
-	
-	#print("Eaten: ", stomach);
+	#if stomach%full == 0:
+		#eatTime = EATCOOL * 2
+		#grow()
 	
 	pass
 	
@@ -95,11 +93,9 @@ func grow():
 	full *= 2
 	spr.apply_scale(Vector2(sz,sz))
 	col.apply_scale(Vector2(sz,sz))
-	#cam.zoom = Vector2(cam.zoom.x + 0.005, cam.zoom.y + 0.005)
 	pass
 
 # Kills the panda
 func kill():
 	get_tree().reload_current_scene()
 	pass
-

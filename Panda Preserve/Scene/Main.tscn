@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://Code/bambooBase.gd" type="Script" id=5]
 [ext_resource path="res://Code/Fire.gd" type="Script" id=6]
 [ext_resource path="res://Code/Pitfall.gd" type="Script" id=7]
-[ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Visual/bamboo_Layer 2.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Audio/GameAudio.wav" type="AudioStream" id=11]
-[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=12]
+[ext_resource path="res://Scene/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Audio/GameAudio.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=13]
 
 [sub_resource type="Curve" id=3]
 
@@ -161,7 +162,7 @@ extents = Vector2( 60.4597, 16.997 )
 
 [node name="Panda" type="RigidBody2D" parent="." index="0"]
 
-position = Vector2( 243.714, -19.5064 )
+position = Vector2( 246.342, -15.1265 )
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 3
@@ -224,7 +225,16 @@ z_index = 7
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Camera2D" type="Camera2D" parent="Panda" index="3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panda" index="3"]
+
+stream = ExtResource( 4 )
+volume_db = 0.05
+pitch_scale = 2.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Camera2D" type="Camera2D" parent="Panda" index="4"]
 
 offset = Vector2( 0, -25 )
 anchor_mode = 1
@@ -250,15 +260,6 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Offset", "Smoothing" ]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panda" index="4"]
-
-stream = ExtResource( 4 )
-volume_db = 0.05
-pitch_scale = 2.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
 [node name="Forrest" type="Node" parent="." index="1"]
 
@@ -568,7 +569,21 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 557.99, 3.44826 )
 shape = SubResource( 13 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="GUI2" parent="CanvasLayer" index="0" instance=ExtResource( 8 )]
+
+[node name="ColorRect" parent="CanvasLayer/GUI2" index="0"]
+
+stretch_mode = 0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
 
 editor/display_folded = true
 layer = -1
@@ -582,7 +597,7 @@ scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
@@ -597,7 +612,7 @@ _sections_unfolded = [ "Motion" ]
 
 position = Vector2( 88.6111, -18.1766 )
 scale = Vector2( 1, 2 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -612,22 +627,22 @@ _sections_unfolded = [ "Motion", "Z Index" ]
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
 position = Vector2( -95.4275, 304.459 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 0.5
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="TileMap" type="TileMap" parent="." index="6"]
+[node name="TileMap" type="TileMap" parent="." index="7"]
 
 mode = 0
-tile_set = ExtResource( 12 )
+tile_set = ExtResource( 13 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -646,3 +661,5 @@ tile_data = PoolIntArray( 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 0, 0, 3, 5, 0, 4, 5,
 _sections_unfolded = [ "Cell", "Collision" ]
 
 
+[editable path="CanvasLayer/GUI2"]
+[editable path="CanvasLayer/GUI2/HBoxContainer/Bars/StomachBar"]

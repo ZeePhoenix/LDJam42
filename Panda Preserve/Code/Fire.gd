@@ -21,7 +21,7 @@ func _ready():
 	bamboo = get_parent().get_child(1).get_child(0)
 	
 	# Var Declaration
-	spd = 0.25
+	spd = 0.8
 	pass
 
 func _process(delta):
