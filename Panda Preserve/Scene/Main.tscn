@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Visual/bamboo_Layer 2.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=11]
+[ext_resource path="res://Assets/Audio/GameAudio.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=12]
 
 [sub_resource type="Curve" id=3]
 
@@ -614,10 +615,19 @@ position = Vector2( -95.4275, 304.459 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="TileMap" type="TileMap" parent="." index="5"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 11 )
+volume_db = 0.5
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="TileMap" type="TileMap" parent="." index="6"]
 
 mode = 0
-tile_set = ExtResource( 11 )
+tile_set = ExtResource( 12 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
