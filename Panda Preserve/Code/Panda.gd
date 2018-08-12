@@ -16,6 +16,7 @@ var mouth
 var spr
 var col
 var cam
+var ear
 
 # Growth Vars
 var sz = 1
@@ -28,6 +29,7 @@ func _ready():
 	spr = get_child(1)
 	col = get_child(2)
 	cam = get_child(3)
+	ear = get_child(4)
 	pass
 
 
@@ -71,6 +73,7 @@ func eatBamboo():
 # The panda actually eats
 func eat():
 	mouth.emitting = true
+	ear.play()
 	eatTime = EATCOOL
 	stomach += 1
 	
