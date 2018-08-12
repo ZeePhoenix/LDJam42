@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Visual/Tileset/g_00.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Visual/Tileset/g_01.png" type="Texture" id=2]
@@ -10,21 +10,18 @@
 [ext_resource path="res://Assets/Visual/Tileset/g_15.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Visual/Tileset/g_16.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Visual/Tileset/g_17.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Visual/Tileset/g_08.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Visual/Tileset/g_07.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Visual/Tileset/g_18.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Visual/Tileset/g_19.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Visual/Tileset/g_10.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Visual/Tileset/g_09.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Visual/Tileset/g_06.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Visual/Tileset/g_11.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Visual/Tileset/g_05.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Visual/Tileset/g_12.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Visual/Tileset/g_11.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Visual/Tileset/g_12.png" type="Texture" id=16]
 
 [node name="Node" type="Node"]
 
 [node name="dG-1" type="Sprite" parent="." index="0"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
@@ -47,7 +44,6 @@ polygon = PoolVector2Array( -15.8306, -15.7509, 15.883, -15.9087, 15.883, 15.647
 [node name="dG-2" type="Sprite" parent="." index="1"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
@@ -70,7 +66,6 @@ polygon = PoolVector2Array( -15.8306, -15.7509, 15.883, -15.9087, 15.883, 15.647
 [node name="dG-3" type="Sprite" parent="." index="2"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -93,7 +88,6 @@ polygon = PoolVector2Array( -15.8306, -15.7509, 15.883, -15.9087, 15.883, 15.647
 [node name="dG-4" type="Sprite" parent="." index="3"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
@@ -116,7 +110,6 @@ polygon = PoolVector2Array( -15.8306, -15.7509, 15.883, -15.9087, 15.883, 15.647
 [node name="dG-5" type="Sprite" parent="." index="4"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
@@ -139,7 +132,6 @@ polygon = PoolVector2Array( -15.8306, -15.7509, 15.883, -15.9087, 15.883, 15.647
 [node name="G-1" type="Sprite" parent="." index="5"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
@@ -164,7 +156,6 @@ polygon = PoolVector2Array( -16.6337, -15, 19.4059, -15, 19.4059, 17.5, -16.6337
 [node name="G-2" type="Sprite" parent="." index="6"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
@@ -187,7 +178,6 @@ polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7
 [node name="G-3" type="Sprite" parent="." index="7"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -210,7 +200,6 @@ polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7
 [node name="G-4" type="Sprite" parent="." index="8"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
@@ -233,7 +222,6 @@ polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7
 [node name="G-5" type="Sprite" parent="." index="9"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
@@ -253,15 +241,14 @@ bounce = 0.0
 build_mode = 1
 polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7948, -16.0979, 15.7948 )
 
-[node name="dG-RbU" type="Sprite" parent="." index="10"]
+[node name="G-LC" type="Sprite" parent="." index="10"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dG-RbU" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="G-LC" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -271,20 +258,19 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dG-RbU/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-LC/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -3.83937, 10.2826, 15.7253, 2.39368, 15.883, 15.6471, -15.515, 15.6471 )
+polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7948, -16.0979, 15.7948 )
 
-[node name="dG-RtU" type="Sprite" parent="." index="11"]
+[node name="G-RC" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="dG-RtU" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="G-RC" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -294,10 +280,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dG-RtU/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RC/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -3.99715, -4.86417, 16.0408, -15.9087, 15.883, 15.6471, -15.8306, 15.8049, -15.6728, 1.76256 )
+polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, -16.2052, 15.9021, 15.7948, -16.0979, 15.7948 )
 
 [node name="G-RtU" type="Sprite" parent="." index="12"]
 
@@ -320,7 +306,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RtU/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -3.99715, -4.86417, 16.0408, -15.9087, 15.883, 15.6471, -15.8306, 15.8049, -15.6728, 1.76256 )
+polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, 2.79477, 15.9021, 15.7948, -15.8306, 15.8049 )
 
 [node name="G-RbU" type="Sprite" parent="." index="13"]
 
@@ -343,37 +329,15 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RbU/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -3.83937, 10.2826, 15.7253, 2.39368, 15.883, 15.6471, -15.515, 15.6471 )
+polygon = PoolVector2Array( -16.0979, 1.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
 
-[node name="dG-RtD" type="Sprite" parent="." index="14"]
+[node name="G-RtD" type="Sprite" parent="." index="14"]
 
 editor/display_folded = true
 visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 15 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="dG-RtD" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dG-RtD/StaticBody2D" index="0"]
-
-build_mode = 1
-polygon = PoolVector2Array( -15.515, -15.9087, 15.7253, 2.39368, 15.883, 15.6471, -15.515, 15.6471 )
-
-[node name="G-RtD" type="Sprite" parent="." index="15"]
-
-visible = false
-position = Vector2( 32.1958, 32.4105 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 16 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="G-RtD" index="0"]
 
@@ -388,36 +352,15 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RtD/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, 2.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
+polygon = PoolVector2Array( 15.9021, -16.2052, 15.9021, 2.79477, 15.9021, 15.7948, -16.0979, 15.7948, -16.0979, 1.79477 )
 
-[node name="dG-RbD" type="Sprite" parent="." index="16"]
+[node name="G-RbD" type="Sprite" parent="." index="15"]
 
 editor/display_folded = true
 visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 17 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="dG-RbD" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dG-RbD/StaticBody2D" index="0"]
-
-build_mode = 1
-polygon = PoolVector2Array( -15.8306, 2.39368, 6.73183, 11.3871, 15.883, 15.6471, -15.515, 15.6471 )
-
-[node name="G-RbD" type="Sprite" parent="." index="17"]
-
-position = Vector2( 32.1958, 32.4105 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 18 )
+texture = ExtResource( 16 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="G-RbD" index="0"]
 
@@ -432,6 +375,6 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RbD/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -16.0979, 1.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
+polygon = PoolVector2Array( 15.9021, 1.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
 
 

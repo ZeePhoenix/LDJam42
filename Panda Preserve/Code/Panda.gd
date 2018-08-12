@@ -93,7 +93,7 @@ func grow():
 	full *= 2
 	spr.apply_scale(Vector2(sz,sz))
 	col.apply_scale(Vector2(sz,sz))
-	cam.zoom = Vector2(cam.zoom.x + 0.025, cam.zoom.y + 0.025)
+	cam.zoom = Vector2(cam.zoom.x + 0.005, cam.zoom.y + 0.005)
 	pass
 
 # Kills the panda

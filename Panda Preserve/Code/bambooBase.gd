@@ -56,7 +56,6 @@ func _process(delta):
 	
 	#Are we burning?
 	if area.overlaps_area(fire):
-		print("bye")
 		queue_free()
 	
 	pass
