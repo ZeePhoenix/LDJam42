@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -75,7 +75,7 @@ extents = Vector2( 1.37894, 3.57782 )
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 49.226, 24.1633 )
+extents = Vector2( 118.788, 24.1633 )
 
 [sub_resource type="Gradient" id=7]
 
@@ -106,7 +106,7 @@ curve = SubResource( 10 )
 render_priority = 0
 trail_divisor = 1
 emission_shape = 2
-emission_box_extents = Vector3( -80, 5, 1 )
+emission_box_extents = Vector3( -120, 5, 1 )
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
@@ -142,11 +142,16 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Spread" ]
 
+[sub_resource type="CircleShape2D" id=12]
+
+custom_solver_bias = 0.0
+radius = 4.70537
+
 [node name="Node" type="Node" index="0"]
 
 [node name="Panda" type="RigidBody2D" parent="." index="0"]
 
-position = Vector2( 309.993, 565.714 )
+position = Vector2( 393.142, 567.332 )
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 3
@@ -240,8 +245,7 @@ editor/display_folded = true
 
 [node name="bambooBase" type="Node2D" parent="Forrest" index="0"]
 
-editor/display_folded = true
-position = Vector2( 550.004, 573.687 )
+position = Vector2( 548.95, 574.741 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -426,7 +430,7 @@ shape = SubResource( 2 )
 [node name="bambooBase8" type="Node2D" parent="Forrest" index="5"]
 
 editor/display_folded = true
-position = Vector2( 577.781, 573.757 )
+position = Vector2( 578.572, 574.547 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -537,7 +541,7 @@ shape = SubResource( 2 )
 [node name="bambooBase7" type="Node2D" parent="Forrest" index="8"]
 
 editor/display_folded = true
-position = Vector2( 564.795, 573.618 )
+position = Vector2( 564.532, 574.672 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -648,7 +652,7 @@ shape = SubResource( 2 )
 [node name="bambooBase10" type="Node2D" parent="Forrest" index="11"]
 
 editor/display_folded = true
-position = Vector2( 536.532, 574.034 )
+position = Vector2( 535.214, 575.088 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -759,7 +763,7 @@ shape = SubResource( 2 )
 [node name="bambooBase9" type="Node2D" parent="Forrest" index="14"]
 
 editor/display_folded = true
-position = Vector2( 616.739, 573.687 )
+position = Vector2( 609.624, 575.268 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -838,9 +842,19 @@ format = 1
 tile_data = PoolIntArray( 983079, 13, 0, 983080, 12, 0, 1048613, 13, 0, 1048614, 12, 0, 1114132, 13, 0, 1114133, 12, 0, 1114134, 9, 0, 1114135, 9, 0, 1114136, 9, 0, 1114137, 9, 0, 1114138, 9, 0, 1114139, 9, 0, 1114140, 9, 0, 1114141, 9, 0, 1114142, 9, 0, 1114143, 9, 0, 1114144, 9, 0, 1114145, 9, 0, 1114146, 9, 0, 1114147, 9, 0, 1114148, 9, 0, 1179648, 9, 0, 1179649, 9, 0, 1179650, 9, 0, 1179651, 9, 0, 1179652, 9, 0, 1179653, 9, 0, 1179654, 9, 0, 1179655, 9, 0, 1179656, 9, 0, 1179657, 9, 0, 1179658, 9, 0, 1179659, 9, 0, 1179660, 9, 0, 1179661, 9, 0, 1179662, 9, 0, 1179663, 9, 0, 1179664, 9, 0, 1179665, 9, 0, 1179666, 9, 0, 1179667, 9, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
-[node name="Fire" type="Area2D" parent="." index="4"]
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="4"]
 
-position = Vector2( 138.95, 575.644 )
+position = Vector2( 55.9326, 558.407 )
+input_pickable = false
+collision_layer = 10
+collision_mask = 7
+collision/safe_margin = 0.08
+script = ExtResource( 7 )
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="Fire" type="Area2D" parent="KinematicBody2D" index="0"]
+
+position = Vector2( 0.0167084, 16.2374 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -850,19 +864,18 @@ collision_layer = 8
 collision_mask = 7
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 7 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Fire" index="0"]
 
 position = Vector2( 0.263519, -15.8113 )
 shape = SubResource( 6 )
 
-[node name="Particles2D" type="Particles2D" parent="Fire" index="1"]
+[node name="Particles2D" type="Particles2D" parent="KinematicBody2D/Fire" index="1"]
 
 position = Vector2( 0, 3.62512 )
 emitting = true
-amount = 1450
+amount = 1000
 lifetime = 2.0
 one_shot = false
 preprocess = 600.0
@@ -880,5 +893,10 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Drawing", "Process Material", "Time" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
+
+position = Vector2( 97.2238, -8.68945 )
+shape = SubResource( 12 )
 
 

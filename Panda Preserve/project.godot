@@ -46,4 +46,7 @@ ui_down=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"
 [rendering]
 
 quality/2d/use_pixel_snap=true
+limits/buffers/canvas_polygon_buffer_size_kb=256
+limits/buffers/canvas_polygon_index_buffer_size_kb=256
+limits/buffers/immediate_buffer_size_kb=4096
 environment/default_environment="res://default_env.tres"

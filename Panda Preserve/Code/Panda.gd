@@ -1,29 +1,35 @@
 extends RigidBody2D
 
+# Constants
 const MOVE = 2
 const JUMP = 150
-const eatCool = 10
+const EATCOOL = 10
 
+# Eating Vars
 var eatTime = 0
 var isEating = false
 var stomach = 0
 var full = 10
 
+# Part Vars
 var mouth
 var spr
 var col
 var cam
 
+# Growth Vars
 var sz = 1
 var mvU = 0
 
 
 func _ready():
+	# Declares the parts of the panda
 	mouth = get_child(0)
 	spr = get_child(1)
 	col = get_child(2)
 	cam = get_child(3)
 	pass
+
 
 func _physics_process(delta):
 	#mouth.hide()
@@ -47,7 +53,8 @@ func _physics_process(delta):
 			
 	
 	pass
-	
+
+# Determines if the panda can eat
 func eatBamboo():
 	var val = false
 	
@@ -60,21 +67,22 @@ func eatBamboo():
 		eatTime -= 1
 	
 	return val
-	
+
+# The panda actually eats
 func eat():
 	mouth.emitting = true
-	eatTime = eatCool
+	eatTime = EATCOOL
 	stomach += 1
 	
 	if stomach%full == 0:
-		eatTime = eatCool * 2
+		eatTime = EATCOOL * 2
 		grow()
 	
 	print("Eaten: ", stomach);
 	
 	pass
 	
-	
+# Grows the Panda
 func grow():
 	sz += 0.05
 	mvU +=1
@@ -84,5 +92,9 @@ func grow():
 	col.apply_scale(Vector2(sz,sz))
 	cam.zoom = Vector2(cam.zoom.x + 0.025, cam.zoom.y + 0.025)
 	pass
+
+# Kills the panda
+func kill():
 	
+	pass
 
