@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -8,26 +8,27 @@
 [ext_resource path="res://Code/Fire.gd" type="Script" id=6]
 [ext_resource path="res://Code/Pitfall.gd" type="Script" id=7]
 [ext_resource path="res://Scene/GUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Visual/bamboo_Layer 2.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Audio/GameAudio.wav" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=13]
+[ext_resource path="res://Code/GUI.gd" type="Script" id=9]
+[ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Audio/GameAudio.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=14]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=1]
 
 min_value = -500.0
 max_value = 500.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=2]
 
 flags = 4
 width = 2048
-curve = SubResource( 3 )
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=3]
 
 render_priority = 0
 trail_divisor = 1
@@ -45,7 +46,7 @@ angular_velocity = 0.0
 angular_velocity_random = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-orbit_velocity_curve = SubResource( 4 )
+orbit_velocity_curve = SubResource( 2 )
 linear_accel = 0.0
 linear_accel_random = 0.0
 radial_accel = 55.0
@@ -68,12 +69,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle" ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 9.59779
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.37894, 3.57782 )
@@ -94,20 +95,20 @@ flags = 4
 gradient = SubResource( 7 )
 width = 2048
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=9]
 
 min_value = -1.0
 max_value = 0.5
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
+[sub_resource type="CurveTexture" id=10]
 
 flags = 4
 width = 150
-curve = SubResource( 10 )
+curve = SubResource( 9 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=11]
 
 render_priority = 0
 trail_divisor = 1
@@ -137,7 +138,7 @@ angle = 45.0
 angle_random = 0.8
 scale = 5.0
 scale_random = 0.25
-scale_curve = SubResource( 11 )
+scale_curve = SubResource( 10 )
 color_ramp = SubResource( 8 )
 hue_variation = 0.0
 hue_variation_random = 0.0
@@ -162,7 +163,7 @@ extents = Vector2( 60.4597, 16.997 )
 
 [node name="Panda" type="RigidBody2D" parent="." index="0"]
 
-position = Vector2( 246.342, -15.1265 )
+position = Vector2( 175.68, -5.19884 )
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 3
@@ -203,7 +204,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 5 )
+process_material = SubResource( 3 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -222,7 +223,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 0.0390625, 0.024353 )
 scale = Vector2( 0.785331, 0.782238 )
 z_index = 7
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panda" index="3"]
@@ -259,7 +260,7 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Drag Margin", "Offset", "Smoothing" ]
+_sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
 
 [node name="Forrest" type="Node" parent="." index="1"]
 
@@ -300,7 +301,7 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="bambooBase2" type="Node2D" parent="Forrest" index="1"]
 
@@ -337,7 +338,7 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="bambooBase3" type="Node2D" parent="Forrest" index="2"]
 
@@ -374,7 +375,7 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="bambooBase4" type="Node2D" parent="Forrest" index="3"]
 
@@ -411,7 +412,7 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="bambooBase5" type="Node2D" parent="Forrest" index="4"]
 
@@ -448,7 +449,7 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="bambooBase6" type="Node2D" parent="Forrest" index="5"]
 
@@ -485,17 +486,1311 @@ _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 
 position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
+
+[node name="bambooBase7" type="Node2D" parent="Forrest" index="6"]
+
+editor/display_folded = true
+position = Vector2( 346.829, -0.87229 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase7" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase7/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase7/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase13" type="Node2D" parent="Forrest" index="7"]
+
+editor/display_folded = true
+position = Vector2( 618.088, -1.45627 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase13" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase13/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase13/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase23" type="Node2D" parent="Forrest" index="8"]
+
+editor/display_folded = true
+position = Vector2( 801.457, -1.16427 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase23" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase23/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase23/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase8" type="Node2D" parent="Forrest" index="9"]
+
+editor/display_folded = true
+position = Vector2( 475.028, -0.49441 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase8" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase8/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase8/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase14" type="Node2D" parent="Forrest" index="10"]
+
+editor/display_folded = true
+position = Vector2( 746.287, -1.07839 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase14" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase14/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase14/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase20" type="Node2D" parent="Forrest" index="11"]
+
+editor/display_folded = true
+position = Vector2( 929.656, -0.786394 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase20" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase20/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase20/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase9" type="Node2D" parent="Forrest" index="12"]
+
+editor/display_folded = true
+position = Vector2( 401.337, -0.58888 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase9" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase9/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase9/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase15" type="Node2D" parent="Forrest" index="13"]
+
+editor/display_folded = true
+position = Vector2( 672.596, -1.17286 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase15" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase15/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase15/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase25" type="Node2D" parent="Forrest" index="14"]
+
+editor/display_folded = true
+position = Vector2( 1092.46, -1.71322 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase25" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase25/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase25/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase19" type="Node2D" parent="Forrest" index="15"]
+
+editor/display_folded = true
+position = Vector2( 855.965, -0.880864 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase19" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase19/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase19/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase10" type="Node2D" parent="Forrest" index="16"]
+
+editor/display_folded = true
+position = Vector2( 426.749, -0.49441 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase10" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase10/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase10/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase17" type="Node2D" parent="Forrest" index="17"]
+
+editor/display_folded = true
+position = Vector2( 698.008, -1.07839 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase17" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase17/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase17/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase34" type="Node2D" parent="Forrest" index="18"]
+
+editor/display_folded = true
+position = Vector2( 1117.87, -1.61875 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase34" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase34/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase34/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase22" type="Node2D" parent="Forrest" index="19"]
+
+editor/display_folded = true
+position = Vector2( 881.377, -0.786394 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase22" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase22/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase22/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase11" type="Node2D" parent="Forrest" index="20"]
+
+editor/display_folded = true
+position = Vector2( 370.163, -0.58888 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase11" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase11/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase11/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase16" type="Node2D" parent="Forrest" index="21"]
+
+editor/display_folded = true
+position = Vector2( 641.422, -1.17286 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase16" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase16/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase16/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase36" type="Node2D" parent="Forrest" index="22"]
+
+editor/display_folded = true
+position = Vector2( 1061.28, -1.71322 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase36" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase36/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase36/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase37" type="Node2D" parent="Forrest" index="23"]
+
+editor/display_folded = true
+position = Vector2( 1224.54, -33.0933 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase37" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase37/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase37/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase38" type="Node2D" parent="Forrest" index="24"]
+
+editor/display_folded = true
+position = Vector2( 1242.81, -33.0933 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase38" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase38/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase38/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase39" type="Node2D" parent="Forrest" index="25"]
+
+editor/display_folded = true
+position = Vector2( 1265.45, -32.696 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase39" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase39/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase39/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase40" type="Node2D" parent="Forrest" index="26"]
+
+editor/display_folded = true
+position = Vector2( 1297.23, -33.0933 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase40" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase40/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase40/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase41" type="Node2D" parent="Forrest" index="27"]
+
+editor/display_folded = true
+position = Vector2( 1326.23, -33.4905 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase41" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase41/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase41/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase24" type="Node2D" parent="Forrest" index="28"]
+
+editor/display_folded = true
+position = Vector2( 824.791, -0.880864 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase24" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase24/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase24/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase12" type="Node2D" parent="Forrest" index="29"]
+
+editor/display_folded = true
+position = Vector2( 504.872, -0.786394 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase12" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase12/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase12/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase18" type="Node2D" parent="Forrest" index="30"]
+
+editor/display_folded = true
+position = Vector2( 776.131, -1.37037 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase18" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase18/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase18/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase21" type="Node2D" parent="Forrest" index="31"]
+
+editor/display_folded = true
+position = Vector2( 1482.54, -97.3183 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase21" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase21/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase21/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase26" type="Node2D" parent="Forrest" index="32"]
+
+editor/display_folded = true
+position = Vector2( 1499.26, -97.3183 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase26" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase26/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase26/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase27" type="Node2D" parent="Forrest" index="33"]
+
+editor/display_folded = true
+position = Vector2( 1523.47, -96.8782 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase27" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase27/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase27/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase28" type="Node2D" parent="Forrest" index="34"]
+
+editor/display_folded = true
+position = Vector2( 1555.16, -97.3183 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase28" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase28/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase28/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase29" type="Node2D" parent="Forrest" index="35"]
+
+editor/display_folded = true
+position = Vector2( 1590.37, -97.7584 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase29" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase29/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase29/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase30" type="Node2D" parent="Forrest" index="36"]
+
+editor/display_folded = true
+position = Vector2( 1629.1, -97.7584 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase30" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase30/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase30/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase31" type="Node2D" parent="Forrest" index="37"]
+
+editor/display_folded = true
+position = Vector2( 1673.55, -96.8781 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase31" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase31/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase31/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase32" type="Node2D" parent="Forrest" index="38"]
+
+editor/display_folded = true
+position = Vector2( 1732.09, -97.3183 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase32" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase32/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase32/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase33" type="Node2D" parent="Forrest" index="39"]
+
+editor/display_folded = true
+position = Vector2( 1706.56, -96.8781 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase33" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase33/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase33/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
+
+[node name="bambooBase35" type="Node2D" parent="Forrest" index="40"]
+
+editor/display_folded = true
+position = Vector2( 1651.11, -96.8781 )
+scale = Vector2( 0.0340064, 0.0627355 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase35" index="0"]
+
+position = Vector2( -0.815186, -0.932129 )
+scale = Vector2( 3.67577, 1.99249 )
+z_index = 2
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase35/bambooBase2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -0.747559, -0.0972295 )
+scale = Vector2( 0.976639, 0.87499 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase35/bambooBase2/StaticBody2D" index="0"]
+
+position = Vector2( 0.0682991, -0.942231 )
+scale = Vector2( 6.25549, 4.95979 )
+shape = SubResource( 5 )
 
 [node name="Fire" type="KinematicBody2D" parent="." index="2"]
 
-editor/display_folded = true
-position = Vector2( -74.6638, -19.754 )
+position = Vector2( -139.778, -22.6739 )
 z_index = 1
 input_pickable = false
 collision_layer = 14
 collision_mask = 7
-collision/safe_margin = 0.08
+collision/safe_margin = 0.5
 script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Pickable", "Z Index", "collision" ]
 
@@ -534,7 +1829,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 1
-process_material = SubResource( 9 )
+process_material = SubResource( 11 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -546,9 +1841,11 @@ _sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 position = Vector2( 27.4861, 9.84229 )
 shape = SubResource( 12 )
 
-[node name="Pitfalls" type="Node" parent="." index="3"]
+[node name="Node2D" type="Node2D" parent="Fire" index="2"]
 
-editor/display_folded = true
+position = Vector2( 121.916, -8.80257 )
+
+[node name="Pitfalls" type="Node" parent="." index="3"]
 
 [node name="Pitfall" type="Area2D" parent="Pitfalls" index="0"]
 
@@ -569,23 +1866,82 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 557.99, 3.44826 )
 shape = SubResource( 13 )
 
+[node name="Pitfall2" type="Area2D" parent="Pitfalls" index="1"]
+
+position = Vector2( 451.227, 35.1369 )
+z_index = 10
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitfalls/Pitfall2" index="0"]
+
+position = Vector2( 557.99, 3.44826 )
+shape = SubResource( 13 )
+
+[node name="Pitfall3" type="Area2D" parent="Pitfalls" index="2"]
+
+position = Vector2( 1266.19, -25.3308 )
+z_index = 10
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitfalls/Pitfall3" index="0"]
+
+position = Vector2( 557.99, 3.44826 )
+shape = SubResource( 13 )
+
+[node name="Pitfall4" type="Area2D" parent="Pitfalls" index="3"]
+
+position = Vector2( 1565.93, -4.15353 )
+z_index = 10
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitfalls/Pitfall4" index="0"]
+
+position = Vector2( 557.99, 3.44826 )
+shape = SubResource( 13 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="GUI2" parent="CanvasLayer" index="0" instance=ExtResource( 8 )]
+[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 8 )]
 
-[node name="ColorRect" parent="CanvasLayer/GUI2" index="0"]
+script = ExtResource( 9 )
+
+[node name="ColorRect" parent="CanvasLayer/GUI" index="0"]
 
 stretch_mode = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="5"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -597,7 +1953,7 @@ scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
@@ -611,8 +1967,8 @@ _sections_unfolded = [ "Motion" ]
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 
 position = Vector2( 88.6111, -18.1766 )
-scale = Vector2( 1, 2 )
-texture = ExtResource( 10 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -627,12 +1983,13 @@ _sections_unfolded = [ "Motion", "Z Index" ]
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
 position = Vector2( -95.4275, 304.459 )
-texture = ExtResource( 11 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = 0.5
 pitch_scale = 1.0
 autoplay = true
@@ -642,7 +1999,7 @@ bus = "Master"
 [node name="TileMap" type="TileMap" parent="." index="7"]
 
 mode = 0
-tile_set = ExtResource( 13 )
+tile_set = ExtResource( 14 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -657,9 +2014,8 @@ collision_layer = 1
 collision_mask = 2
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 0, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 5, 0, 8, 5, 0, 9, 5, 0, 10, 5, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 14, 9, 0, 15, 9, 0, 16, 16, 0, 17, 16, 0, 18, 16, 0, 19, 9, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 26, 9, 0, 27, 9, 0, 28, 9, 0, 29, 9, 0, 30, 9, 0, 31, 9, 0, 32, 9, 0, 33, 9, 0, 34, 9, 0, 35, 9, 0, 36, 9, 0, 37, 9, 0, 38, 9, 0, 39, 9, 0, 40, 9, 0, 41, 9, 0, 42, 9, 0, 43, 9, 0, 44, 9, 0, 45, 9, 0, 46, 9, 0, 47, 9, 0, 48, 9, 0, 49, 9, 0, 50, 9, 0, 51, 9, 0, 52, 9, 0, 53, 9, 0, 54, 9, 0, 131071, 3, 0, 65536, 4, 0, 65537, 2, 0, 65538, 0, 0, 65539, 3, 0, 65540, 4, 0, 65541, 3, 0, 65542, 0, 0, 65543, 2, 0, 65544, 2, 0, 65545, 4, 0, 65546, 2, 0, 65547, 1, 0, 65548, 1, 0, 65549, 0, 0, 65550, 3, 0, 65551, 0, 0, 65552, 16, 0, 65553, 16, 0, 65554, 16, 0, 65555, 4, 0, 65556, 3, 0, 65557, 3, 0, 65558, 3, 0, 65559, 3, 0, 65560, 3, 0, 65561, 3, 0, 65562, 1, 0, 65563, 1, 0, 65564, 1, 0, 65565, 1, 0, 65566, 1, 0, 65567, 1, 0, 65568, 1, 0, 65569, 1, 0, 65570, 1, 0, 65571, 1, 0, 65572, 1, 0, 65573, 1, 0, 65574, 1, 0, 65575, 1, 0, 65576, 1, 0, 65577, 1, 0, 65578, 1, 0, 65579, 1, 0, 65580, 1, 0, 65581, 1, 0, 65582, 1, 0, 65583, 1, 0, 65584, 1, 0, 65585, 1, 0, 65586, 1, 0, 65587, 1, 0, 65588, 1, 0, 65589, 1, 0, 65590, 1, 0 )
+tile_data = PoolIntArray( -196564, 15, 0, -196563, 14, 0, -196562, 9, 0, -196561, 5, 0, -196560, 6, 0, -196559, 9, 0, -196558, 8, 0, -196557, 5, 0, -196556, 9, 0, -196555, 8, 0, -196554, 6, 0, -196553, 16, 0, -196552, 16, 0, -196551, 16, 0, -196550, 16, 0, -196549, 7, 0, -196548, 8, 0, -196547, 9, 0, -196546, 5, 0, -196545, 12, 0, -196544, 13, 0, -131030, 15, 0, -131029, 14, 0, -131028, 10, 0, -131027, 0, 0, -131026, 3, 0, -131025, 3, 0, -131024, 3, 0, -131023, 3, 0, -131022, 2, 0, -131021, 1, 0, -131020, 2, 0, -131019, 1, 0, -131018, 1, 0, -131017, 16, 0, -131016, 16, 0, -131015, 16, 0, -131014, 16, 0, -131013, 2, 0, -131012, 2, 0, -131011, 2, 0, -131010, 1, 0, -131009, 2, 0, -131008, 1, 0, -131007, 16, 0, -131006, 16, 0, -131005, 16, 0, -131004, 6, 0, -131003, 7, 0, -131002, 9, 0, -65500, 15, 0, -65499, 14, 0, -65498, 8, 0, -65497, 6, 0, -65496, 7, 0, -65495, 6, 0, -65494, 10, 0, -65493, 2, 0, -65492, 2, 0, -65491, 2, 0, -65490, 2, 0, -65489, 2, 0, -65488, 1, 0, -65487, 2, 0, -65486, 2, 0, -65485, 2, 0, -65484, 1, 0, -65483, 2, 0, -65482, 2, 0, -65481, 16, 0, -65480, 16, 0, -65479, 16, 0, -65478, 16, 0, -65477, 2, 0, -65476, 2, 0, -65475, 2, 0, -65474, 1, 0, -65473, 2, 0, -65472, 3, 0, -65471, 16, 0, -65470, 16, 0, -65469, 16, 0, -65468, 1, 0, -65467, 0, 0, -65466, 3, 0, 65528, 2, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 3, 0, 2, 6, 0, 3, 5, 0, 4, 7, 0, 5, 5, 0, 6, 6, 0, 7, 5, 0, 8, 5, 0, 9, 5, 0, 10, 6, 0, 11, 7, 0, 12, 9, 0, 13, 5, 0, 14, 9, 0, 15, 9, 0, 16, 16, 0, 17, 16, 0, 18, 16, 0, 19, 9, 0, 20, 9, 0, 21, 5, 0, 22, 7, 0, 23, 9, 0, 24, 3, 0, 25, 9, 0, 26, 5, 0, 27, 7, 0, 28, 9, 0, 29, 9, 0, 30, 16, 0, 31, 16, 0, 32, 16, 0, 33, 9, 0, 34, 9, 0, 35, 9, 0, 36, 10, 0, 37, 1, 0, 38, 1, 0, 39, 1, 0, 40, 3, 0, 41, 1, 0, 42, 0, 0, 43, 2, 0, 44, 2, 0, 45, 1, 0, 46, 2, 0, 47, 1, 0, 48, 2, 0, 49, 2, 0, 50, 2, 0, 51, 2, 0, 52, 2, 0, 53, 2, 0, 54, 2, 0, 65, 16, 0, 66, 16, 0, 67, 16, 0, 131064, 2, 0, 131065, 2, 0, 131066, 2, 0, 131067, 2, 0, 131068, 2, 0, 131069, 2, 0, 131070, 2, 0, 131071, 3, 0, 65536, 3, 0, 65537, 2, 0, 65538, 0, 0, 65539, 3, 0, 65540, 4, 0, 65541, 3, 0, 65542, 0, 0, 65543, 3, 0, 65544, 1, 0, 65545, 4, 0, 65546, 2, 0, 65547, 1, 0, 65548, 3, 0, 65549, 0, 0, 65550, 3, 0, 65551, 1, 0, 65552, 16, 0, 65553, 16, 0, 65554, 16, 0, 65555, 4, 0, 65556, 3, 0, 65557, 3, 0, 65558, 3, 0, 65559, 3, 0, 65560, 3, 0, 65561, 3, 0, 65562, 1, 0, 65563, 3, 0, 65564, 3, 0, 65565, 1, 0, 65566, 16, 0, 65567, 16, 0, 65568, 16, 0, 65569, 1, 0, 65570, 3, 0, 65571, 1, 0, 65572, 3, 0, 65573, 1, 0, 65574, 3, 0, 65575, 1, 0, 65576, 1, 0, 65577, 1, 0, 65578, 1, 0, 65579, 1, 0, 65580, 1, 0, 65581, 1, 0, 65582, 1, 0, 65583, 1, 0, 65584, 1, 0, 65585, 1, 0, 65586, 2, 0, 65587, 1, 0, 65588, 1, 0, 65589, 1, 0, 65590, 1, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
 
-[editable path="CanvasLayer/GUI2"]
-[editable path="CanvasLayer/GUI2/HBoxContainer/Bars/StomachBar"]
+[editable path="CanvasLayer/GUI"]

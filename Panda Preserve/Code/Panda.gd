@@ -3,8 +3,9 @@ extends RigidBody2D
 # Constants
 const MOVE = 2
 const JUMP = 150
-const EATCOOL = 10
-const MINEAT = 12
+const JUMPCOST = 5
+const EATCOOL = 5
+const MINEAT = 22
 
 # Eating Vars
 var eatTime = 0
@@ -17,12 +18,16 @@ var mouth
 var ear
 var spr
 var col
+var camera
 var gui
 
 # Growth Vars
 var sz = 1
 var mvU = 0
 
+var fire
+var dist
+var start
 
 func _ready():
 	# Declares the parts of the panda
@@ -31,10 +36,17 @@ func _ready():
 	col = get_child(2)
 	ear = get_child(3)
 	gui = get_parent().get_child(4).get_child(0)
+	camera = get_child(4)
+	fire = $"../Fire/Node2D"
+	start = global_position.x
+	print(start)
 	pass
 
 func _physics_process(delta):
 	var move = MOVE + mvU
+	
+	camera.limit_right = fire.global_position.x + 220
+	dist = global_position.x - start
 	
 	if Input.is_action_pressed("ui_right"):
 		if (linear_velocity.y > -12 && linear_velocity.y < 12):
@@ -48,9 +60,10 @@ func _physics_process(delta):
 		else:
 			apply_impulse(Vector2(0,0),Vector2((-1 * MOVE)/3,0))
 	
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") && stomach > JUMPCOST:
 		if (linear_velocity.y > -12 && linear_velocity.y < 12):
 			set_axis_velocity(Vector2(0,-1 * JUMP))
+			stomach -= JUMPCOST
 			
 	
 	pass
@@ -79,15 +92,14 @@ func eat():
 	eatTime = EATCOOL
 	stomach += 1
 	
-	#if stomach%full == 0:
-		#eatTime = EATCOOL * 2
-		#grow()
-	
+	# How full are we?
+	var p = stomach%full
+	mvU = int(p/10)
 	pass
 	
 # Grows the Panda
 func grow():
-	sz += 0.02
+	#sz += 0.02
 	mvU +=1
 	#self.mass += sz/15
 	full *= 2
