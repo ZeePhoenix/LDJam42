@@ -1,12 +1,16 @@
 extends Node2D
 
+# Self Variables
 var bamboo
-var panda
 
-var timer = 20
+# World Variables
+var panda
+var fire
+
+var timer
 var curTime = 0
 
-var maxHeight = 8
+var maxHeight
 var curHeight = 0
 
 var x
@@ -16,9 +20,11 @@ var area
 func _ready():
 	bamboo = load("res://Scene/bambooSection.tscn")
 	panda = get_parent().get_parent().get_child(0)
+	fire = get_parent().get_parent().get_child(2).get_child(0)
+	
 	x = global_position.x
 	y = global_position.y
-	area = get_child(0).get_child(0)
+	area = self.get_child(0).get_child(0)
 	
 	maxHeight = int(rand_range(6,12))
 	timer = int(rand_range(15,40))
@@ -36,8 +42,7 @@ func _process(delta):
 			b.move_local_y((-1 * ((curHeight + 1) * 64)) + 64)
 			curTime = 0
 	
-	#Check for collision??
-	#print(area.get_overlapping_bodies())
+	#Are we being eaten
 	if (area.overlaps_body(panda)):
 		if panda.eatBamboo():
 			if curHeight == 0:
@@ -48,5 +53,10 @@ func _process(delta):
 				var n = get_child_count()
 				var c = get_child(n - 1)
 				c.queue_free()
+	
+	#Are we burning?
+	if area.overlaps_area(fire):
+		print("bye")
+		queue_free()
 	
 	pass

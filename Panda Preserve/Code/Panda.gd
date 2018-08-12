@@ -81,7 +81,7 @@ func eat():
 		eatTime = EATCOOL * 2
 		grow()
 	
-	print("Eaten: ", stomach);
+	#print("Eaten: ", stomach);
 	
 	pass
 	
@@ -98,6 +98,6 @@ func grow():
 
 # Kills the panda
 func kill():
-	
+	get_tree().reload_current_scene()
 	pass
 

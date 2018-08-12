@@ -6,6 +6,7 @@ var area
 
 # Variables about world
 var panda
+var bamboo
 
 # Movement
 var spd
@@ -17,13 +18,16 @@ func _ready():
 	
 	# Learn about scene
 	panda = get_parent().get_child(0)
+	bamboo = get_parent().get_child(1).get_child(0)
 	
 	# Var Declaration
 	spd = 0.25
 	pass
 
 func _process(delta):
+	show()
 	
+	# Detect Panda
 	if area.overlaps_body(panda):
 		panda.kill()
 	
