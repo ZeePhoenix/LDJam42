@@ -5,7 +5,7 @@ const MOVE = 2
 const JUMP = 150
 const JUMPCOST = 5
 const EATCOOL = 5
-const MINEAT = 22
+const MINEAT = 32
 
 # Eating Vars
 var eatTime = 0
@@ -45,8 +45,8 @@ func _ready():
 func _physics_process(delta):
 	var move = MOVE + mvU
 	
-	camera.limit_right = fire.global_position.x + 220
-	dist = global_position.x - start
+	#camera.limit_right = fire.global_position.x + 250
+	dist = (global_position.x - start) / 10
 	
 	if Input.is_action_pressed("ui_right"):
 		if (linear_velocity.y > -12 && linear_velocity.y < 12):
@@ -61,7 +61,7 @@ func _physics_process(delta):
 			apply_impulse(Vector2(0,0),Vector2((-1 * MOVE)/3,0))
 	
 	if Input.is_action_just_pressed("ui_up") && stomach > JUMPCOST:
-		if (linear_velocity.y > -12 && linear_velocity.y < 12):
+		if (linear_velocity.y > -12 && linear_velocity.y < 25):
 			set_axis_velocity(Vector2(0,-1 * JUMP))
 			stomach -= JUMPCOST
 			
@@ -94,7 +94,10 @@ func eat():
 	
 	# How full are we?
 	var p = stomach%full
-	mvU = int(p/10)
+	mvU = int(p/12)
+	if mvU > 6:
+		mvU = 6
+	print(mvU)
 	pass
 	
 # Grows the Panda
