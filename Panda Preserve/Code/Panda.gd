@@ -30,6 +30,8 @@ func _ready():
 	col = get_child(2)
 	cam = get_child(3)
 	ear = get_child(4)
+	
+	cam.align()
 	pass
 
 
@@ -87,13 +89,13 @@ func eat():
 	
 # Grows the Panda
 func grow():
-	sz += 0.05
+	sz += 0.02
 	mvU +=1
 	#self.mass += sz/15
 	full *= 2
 	spr.apply_scale(Vector2(sz,sz))
 	col.apply_scale(Vector2(sz,sz))
-	cam.zoom = Vector2(cam.zoom.x + 0.005, cam.zoom.y + 0.005)
+	#cam.zoom = Vector2(cam.zoom.x + 0.005, cam.zoom.y + 0.005)
 	pass
 
 # Kills the panda

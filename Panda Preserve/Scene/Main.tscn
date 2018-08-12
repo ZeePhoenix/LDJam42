@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Code/Panda.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Visual/bambooSection.png" type="Texture" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://Assets/Audio/munch.wav" type="AudioStream" id=4]
 [ext_resource path="res://Code/bambooBase.gd" type="Script" id=5]
 [ext_resource path="res://Code/Fire.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Visual/bkg.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=8]
+[ext_resource path="res://Code/Pitfall.gd" type="Script" id=7]
+[ext_resource path="res://Code/ParallaxBackground.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 0.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Visual/bamboo_Layer 1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Visual/Tileset/GroundMap.tres" type="TileSet" id=11]
 
 [sub_resource type="Curve" id=3]
 
@@ -66,7 +69,7 @@ _sections_unfolded = [ "Angle" ]
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 9.59779
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -148,11 +151,16 @@ _sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Gravity",
 custom_solver_bias = 0.0
 radius = 4.70537
 
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60.4597, 16.997 )
+
 [node name="Node" type="Node" index="0"]
 
 [node name="Panda" type="RigidBody2D" parent="." index="0"]
 
-position = Vector2( 243.326, -8.4648 )
+position = Vector2( 243.714, -19.5064 )
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 collision_layer = 3
@@ -211,8 +219,9 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 0.0390625, 0.024353 )
 scale = Vector2( 0.785331, 0.782238 )
+z_index = 7
 shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="Panda" index="3"]
 
@@ -251,6 +260,8 @@ mix_target = 0
 bus = "Master"
 
 [node name="Forrest" type="Node" parent="." index="1"]
+
+editor/display_folded = true
 
 [node name="bambooBase" type="Node2D" parent="Forrest" index="0"]
 
@@ -292,7 +303,7 @@ shape = SubResource( 2 )
 [node name="bambooBase2" type="Node2D" parent="Forrest" index="1"]
 
 editor/display_folded = true
-position = Vector2( 186.364, -2.04025 )
+position = Vector2( 164.018, -1.75684 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -329,7 +340,7 @@ shape = SubResource( 2 )
 [node name="bambooBase3" type="Node2D" parent="Forrest" index="2"]
 
 editor/display_folded = true
-position = Vector2( 208.901, -2.25488 )
+position = Vector2( 195.192, -1.75684 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -366,7 +377,7 @@ shape = SubResource( 2 )
 [node name="bambooBase4" type="Node2D" parent="Forrest" index="3"]
 
 editor/display_folded = true
-position = Vector2( 229.721, -1.82561 )
+position = Vector2( 220.604, -1.66237 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -403,7 +414,7 @@ shape = SubResource( 2 )
 [node name="bambooBase5" type="Node2D" parent="Forrest" index="4"]
 
 editor/display_folded = true
-position = Vector2( 261.058, -1.18169 )
+position = Vector2( 268.883, -1.66237 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -440,7 +451,7 @@ shape = SubResource( 2 )
 [node name="bambooBase6" type="Node2D" parent="Forrest" index="5"]
 
 editor/display_folded = true
-position = Vector2( 288.961, -1.39633 )
+position = Vector2( 308.363, -1.66237 )
 scale = Vector2( 0.0340064, 0.0627355 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -474,45 +485,9 @@ position = Vector2( 0.0682991, -0.942231 )
 scale = Vector2( 6.25549, 4.95979 )
 shape = SubResource( 2 )
 
-[node name="bambooBase7" type="Node2D" parent="Forrest" index="6"]
-
-editor/display_folded = true
-position = Vector2( 308.493, -1.82562 )
-scale = Vector2( 0.0340064, 0.0627355 )
-script = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="bambooBase2" type="Sprite" parent="Forrest/bambooBase7" index="0"]
-
-position = Vector2( -0.815186, -0.932129 )
-scale = Vector2( 3.67577, 1.99249 )
-z_index = 2
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Z Index" ]
-
-[node name="StaticBody2D" type="Area2D" parent="Forrest/bambooBase7/bambooBase2" index="0"]
-
-editor/display_folded = true
-position = Vector2( -0.747559, -0.0972295 )
-scale = Vector2( 0.976639, 0.87499 )
-input_pickable = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 4
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision", "Pickable", "collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Forrest/bambooBase7/bambooBase2/StaticBody2D" index="0"]
-
-position = Vector2( 0.0682991, -0.942231 )
-scale = Vector2( 6.25549, 4.95979 )
-shape = SubResource( 2 )
-
 [node name="Fire" type="KinematicBody2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( -74.6638, -19.754 )
 z_index = 1
 input_pickable = false
@@ -569,9 +544,31 @@ _sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 position = Vector2( 27.4861, 9.84229 )
 shape = SubResource( 12 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="3"]
+[node name="Pitfalls" type="Node" parent="." index="3"]
 
 editor/display_folded = true
+
+[node name="Pitfall" type="Area2D" parent="Pitfalls" index="0"]
+
+position = Vector2( 0.975342, 29.7483 )
+z_index = 10
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitfalls/Pitfall" index="0"]
+
+position = Vector2( 557.99, 3.44826 )
+shape = SubResource( 13 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
+
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -583,20 +580,41 @@ scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
+script = ExtResource( 8 )
 _sections_unfolded = [ "Scroll" ]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground" index="0"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
-position = Vector2( 1210.62, -218.589 )
-scale = Vector2( 4, 4 )
-z_index = -1
-texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+position = Vector2( 851.215, -1487.66 )
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 2048, 1536 )
+_sections_unfolded = [ "Motion" ]
 
-[node name="TileMap" type="TileMap" parent="." index="4"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+
+scale = Vector2( 2, 1 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+
+position = Vector2( 1039.75, -1847.82 )
+motion_scale = Vector2( 1, 2 )
+motion_offset = Vector2( -300, 15 )
+motion_mirroring = Vector2( 2048, 1536 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TileMap" type="TileMap" parent="." index="5"]
 
 mode = 0
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -611,7 +629,7 @@ collision_layer = 1
 collision_mask = 2
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -65525, 17, 0, -65524, 15, 0, -65523, 7, 0, -65522, 6, 0, -65521, 5, 0, 65535, 9, 0, 0, 6, 0, 1, 9, 0, 2, 8, 0, 3, 6, 0, 4, 9, 0, 5, 7, 0, 6, 9, 0, 7, 5, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 18, 0, 12, 1, 0, 13, 1, 0, 14, 4, 0, 15, 1, 0, 131071, 3, 0, 65536, 4, 0, 65537, 2, 0, 65538, 0, 0, 65539, 3, 0, 65540, 4, 0, 65541, 3, 0, 65542, 0, 0, 65543, 2, 0, 65544, 2, 0, 65545, 4, 0, 65546, 2, 0, 65547, 1, 0, 65548, 1, 0, 65549, 0, 0, 65550, 3, 0, 65551, 0, 0 )
+tile_data = PoolIntArray( 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 0, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 5, 0, 8, 5, 0, 9, 5, 0, 10, 5, 0, 11, 10, 0, 12, 1, 0, 13, 1, 0, 14, 4, 0, 15, 1, 0, 16, 16, 0, 17, 16, 0, 18, 16, 0, 19, 4, 0, 20, 3, 0, 21, 3, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 36, 1, 0, 37, 1, 0, 38, 1, 0, 39, 1, 0, 40, 1, 0, 41, 1, 0, 42, 1, 0, 43, 1, 0, 44, 1, 0, 45, 1, 0, 46, 1, 0, 47, 1, 0, 48, 1, 0, 49, 1, 0, 50, 1, 0, 51, 1, 0, 52, 1, 0, 53, 1, 0, 54, 1, 0, 131071, 3, 0, 65536, 4, 0, 65537, 2, 0, 65538, 0, 0, 65539, 3, 0, 65540, 4, 0, 65541, 3, 0, 65542, 0, 0, 65543, 2, 0, 65544, 2, 0, 65545, 4, 0, 65546, 2, 0, 65547, 1, 0, 65548, 1, 0, 65549, 0, 0, 65550, 3, 0, 65551, 0, 0, 65552, 16, 0, 65553, 16, 0, 65554, 16, 0, 65555, 4, 0, 65556, 3, 0, 65557, 3, 0, 65558, 3, 0, 65559, 3, 0, 65560, 3, 0, 65561, 3, 0 )
 _sections_unfolded = [ "Cell", "Collision" ]
 
 
