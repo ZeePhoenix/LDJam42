@@ -370,7 +370,6 @@ polygon = PoolVector2Array( -15.515, -15.9087, 15.7253, 2.39368, 15.883, 15.6471
 
 [node name="G-RtD" type="Sprite" parent="." index="15"]
 
-editor/display_folded = true
 visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
@@ -389,7 +388,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RtD/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -15.515, -15.9087, 15.7253, 2.39368, 15.883, 15.6471, -15.515, 15.6471 )
+polygon = PoolVector2Array( -16.0979, -16.2052, 15.9021, 2.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
 
 [node name="dG-RbD" type="Sprite" parent="." index="16"]
 
@@ -416,8 +415,6 @@ polygon = PoolVector2Array( -15.8306, 2.39368, 6.73183, 11.3871, 15.883, 15.6471
 
 [node name="G-RbD" type="Sprite" parent="." index="17"]
 
-editor/display_folded = true
-visible = false
 position = Vector2( 32.1958, 32.4105 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 18 )
@@ -435,6 +432,6 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="G-RbD/StaticBody2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -15.8306, 2.39368, 6.73183, 11.3871, 15.883, 15.6471, -15.515, 15.6471 )
+polygon = PoolVector2Array( -16.0979, 1.79477, 15.9021, 15.7948, -16.0979, 15.7948 )
 
 
