@@ -10,6 +10,7 @@ var bamboo
 
 # Movement
 var spd
+var wait = 60
 
 func _ready():
 	# Declare Self
@@ -31,6 +32,9 @@ func _process(delta):
 	if area.overlaps_body(panda):
 		panda.kill()
 	
-	move_and_collide(Vector2(spd, 0))
+	if wait > 0:
+		wait -= 1
+	else:
+		move_and_collide(Vector2(spd, 0))
 	
 	pass
